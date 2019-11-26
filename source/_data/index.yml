@@ -1,0 +1,71 @@
+# 首页设置在此
+banner: image/bg.png
+headerNav:
+  - title: 资讯
+    sub:
+      - title: 活动
+        href: /categories/Activity/
+      # - title: 博客
+      #   href: /blog/
+  
+  #- title: 合作伙伴
+  #  href: /partners
+  - title: 资源
+    sub:
+      - title: 文档
+        href: /categories/Document
+      - title: 手册
+        href: /categories/Manual
+  - title: 案例
+    href: /categories/Solution/
+  - title: 电子书
+    href: /book
+
+  - title: 关于
+    sub:
+      - title: 版权声明
+        href: /profile/license
+      - title: 联系我们
+        href: /profile/contact
+      - title: 成员
+        href: /members/
+      - title: 关于
+        href: /profile/about
+        
+footNav:
+  - title: 版权声明
+    href: /profile/license
+  # - title: 语言
+  #   href: https://electronjs.org/languages
+  - title: 联系我们
+    href: /profile/contact
+social:
+  github:
+    name: CSTStudio
+    domain: https://github.com/cststudio/
+    title: Github Organization
+principle:
+  - title: 专注
+    icon: feather-alt
+  - title: 极致
+    icon: handshake
+  - title: 口碑
+    icon: users
+
+partner:
+  # - title: 极米微特
+  #   logo: 
+  #   URL: 
+  #   description: 战略合作
+  - title: 阿里云
+    logo: image/3part/aliyun.jpg
+    URL: https://www.aliyun.com/
+    description: 云服务
+  - title: 腾讯企业邮箱
+    logo: image/3part/exmail.jpg
+    URL: https://exmail.qq.com/
+    description: 邮箱服务
+  - title: DockerHub
+    logo: image/3part/docker.jpg
+    URL: https://hub.docker.com/
+    description: Docker服务

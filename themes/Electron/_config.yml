@@ -1,0 +1,7 @@
+language:
+  en-US:
+    local: English
+  zh-CN:
+    local: 中文
+    english: Chinese Simplified
+    default: true

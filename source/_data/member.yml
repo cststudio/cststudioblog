@@ -1,0 +1,51 @@
+- name: 李迟
+  alias: Late Lee
+  project:
+    - 架构师
+    - 核心开发组
+  GitHub: latelee
+  email: li@latelee.org
+  URL: 'https://www.latelee.org'
+
+- name: 徐沐枫
+  project:
+    - 核心开发组
+
+- name: 柳其鸣
+  project:
+    - 核心开发组
+
+- name: 曲商行
+  project:
+    - 核心开发组
+
+- name: lambda666
+  project:
+    - 核心开发组
+  GitHub: lambda666
+
+- name: Li Smith
+  project:
+    - 核心开发组
+  GitHub: baidang201
+
+- name: 木木
+  project:
+    - 核心开发组
+  GitHub: jiahaihuang
+
+# - name: 小桂哥
+#   project:
+#     - 核心开发组
+
+# - name: 邹宗远
+#   project:
+#     - 核心开发组
+
+# - name: 刘辰
+#   project:
+#     - 核心开发组
+
+# - name: 王昌林
+#   project:
+#     - 核心开发组

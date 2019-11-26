@@ -1,0 +1,30 @@
+
+## 配置说明
+首页标题、脚底：_data/index.yml
+成员：_data/member.yml
+
+
+## 页面布局
+
+主题/layout/
+头部：
+layout.ejs
+
+主页面：
+main.ejs
+
+项目的单个页面布局：proejct.ejs
+
+文章时间、作者信息：
+component/byline.ejs
+
+
+多语言支持：
+https://hexo.io/docs/permalinks.html#Multi-language-Support
+https://hexo.io/docs/internationalization.html
+https://stackoverflow.com/questions/50676087/how-to-dynamically-change-language-in-hexo
+
+======================
+
+资源列表：
+https://github.com/cststudio/toolchain

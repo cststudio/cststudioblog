@@ -1,0 +1,130 @@
+<!--
+佛说：众生皆苦。
+须菩提，忍辱波罗密，如来说非忍辱波罗密，是名忍辱波罗密。
+过去心不可得，现在心不可得，未来心不可得
+
+开经偈：
+无上甚深微妙法，百千万劫难遭遇。
+我今见闻得受持，愿解如来真实义。     
+-->
+
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+
+  <title><%= config.title %> | <%= config.subtitle %></title>
+
+  <% const {social, headerNav, footNav} = site.data.index; %>
+
+  <meta name="author" content="<%= config.author %>">
+  <meta name="generator" content="hexo">
+  <meta name="theme-color" content="#2f3241">
+
+  <!-- consumed by scripts/get-localized-strings -->
+  <meta name="localized.clipboard.copy" content="Copy">
+  <meta name="localized.clipboard.copy_to_clipboard" content="复制到剪贴板">
+  <meta name="localized.clipboard.copied" content="已复制">
+
+  <base href="/">
+
+  <link rel="shortcut icon" href="<%= config.icon %>">
+
+  <link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://lib.baomitu.com/highlight.js/9.15.10/styles/dark.min.css">
+  <link rel="stylesheet" href="library/index.css">
+  <link rel="stylesheet" href="common.css">
+  <style>
+    .site-header-nav-item a:link {
+      text-decoration: none;
+    }
+  </style>
+  <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.slim.min.js"></script>
+  <script src="https://lib.baomitu.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://lib.baomitu.com/highlight.js/9.15.10/highlight.min.js"></script>
+  <script src="common.js" defer async></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <!-- 网站logo -->
+      <a class="site-header-logo no-underline-hover" href=".">
+        <img class="site-header-icon" src="<%= config.logo %>">
+        <%= config.title %>
+      </a>
+      <!-- 标题导航 -->
+      <nav class="site-header-nav">
+        <% headerNav.forEach(({title, href, href_match, sub}, index) => { %>
+          <div class="site-header-nav-item">
+            <% if (! sub) { %>
+              <a role="button" href="<%= href %>" data-href-match="<%= href_match %>">
+                <%= title %>
+              </a>
+            <% } else { %>
+              <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                id="Nav_<%= index %>" href="<%= href %>" data-href-match="<%= href_match %>">
+                <%= title %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="Nav_<%= index %>">
+                <% sub.forEach(({title, href}) => { %>
+                  <a class="dropdown-item" href="<%= href %>"><%= title %></a>
+                <% }); %>
+              </div>
+            <% } %>
+          </div>
+        <% }) %>
+        <form action="search/" class="ais-search-box">
+          <input type="search" name="keyword" required placeholder="搜索"
+            id="search-input" class="nav-search ais-search-box--input"
+            aria-label="search-box" autocapitalize="off" autocorrect="off" role="textbox">
+        </form>
+        <a class="site-header-nav-item octicon"
+          href="https://github.com/<%= social.github.name %>/"
+          title="<%= social.github.title %>">
+          <span class="mega-octicon octicon-mark-github vertical-middle"></span>
+        </a>
+        <!-- <a class="site-header-nav-item bordered lang-select-button" href="#Language" data-toggle="collapse">
+          中文
+        </a> -->
+      </nav>
+    </div>
+  </header>
+  <!-- 暂时去掉语言，后续添加再开启 -->
+  <!-- <%- include('./component/language') %> -->
+
+  <%- body %>
+
+  <footer class="footer">
+    <div class="container">
+      <nav class="footer-nav">
+        <% footNav.forEach(({href, title}, index) => { %>
+          <a class="footer-nav-item <%= index ? '' : 'active' %>" href="<%= href %>">
+            <%= title %>
+          </a>
+        <% }) %>
+      </nav>
+      <span>Copyright &copy; <a href="https://www.cststudio.com.cn/" >CST工作室</a> 2017-2019</span>
+      <a href="http://www.miitbeian.gov.cn/" rel="external nofollow"  target=_blank> 桂ICP备10003672号-2</a>
+      <script src="https://s13.cnzz.com/z_stat.php?id=1273965306&web_id=1273965306" language="JavaScript"></script>
+
+      <span class="footer-social">
+        <% for (let name in social) { %>
+          <a class="footer-nav-item icon"
+            href="<%= (social[name].domain + '/' + social[name].name) %>"
+            title="<%= social[name].title %>">
+            <i class="devicon-<%= name %>-plain vertical-middle"></i>
+          </a>
+        <% } %>
+      </span>
+    </div>
+  </footer>
+</body>
+
+</html>

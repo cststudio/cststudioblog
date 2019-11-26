@@ -1,0 +1,18 @@
+---
+layout: project
+
+title: H.264码流分析器
+categories:
+  - Project
+tags:
+  - MFC
+
+description: 基于MFC的H.264、H.265码流分析器
+logo: 
+repository: https://github.com/latelee/H264BSAnalyzer
+---
+
+Windows MFC工程，支持Win7/Win10  
+智能识别H.264&H.265文件  
+具备播放H.264&H.265裸码流功能  
+源码托管github，协议好友  
