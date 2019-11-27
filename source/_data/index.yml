@@ -7,9 +7,9 @@ headerNav:
         href: /categories/Activity/
       # - title: 博客
       #   href: /blog/
-  
-  #- title: 合作伙伴
-  #  href: /partners
+      # - title: TODO归档
+      #   href: /blog/
+
   - title: 资源
     sub:
       - title: 文档
@@ -18,7 +18,7 @@ headerNav:
         href: /categories/Manual
   - title: 案例
     href: /categories/Solution/
-  - title: 电子书
+  - title: 书籍
     href: /book
 
   - title: 关于
@@ -46,11 +46,14 @@ social:
     title: Github Organization
 principle:
   - title: 专注
-    icon: feather-alt
+    #icon: feather-alt
+    icon: tint
   - title: 极致
-    icon: handshake
+    icon: filter
   - title: 口碑
     icon: users
+  - title: 合作
+    icon: handshake
 
 partner:
   # - title: 极米微特
@@ -65,7 +68,12 @@ partner:
     logo: image/3part/exmail.jpg
     URL: https://exmail.qq.com/
     description: 邮箱服务
+  - title: GitHub
+    logo: image/3part/github.jpg
+    URL: https://github.com/
+    description: 源码托管
   - title: DockerHub
     logo: image/3part/docker.jpg
     URL: https://hub.docker.com/
     description: Docker服务
+    
