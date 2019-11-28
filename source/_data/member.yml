@@ -1,57 +1,84 @@
 - name: 李迟
-  alias: Late Lee
-  project:
+  alias: 李迟
+  title: 首席架构师
+  city: 南宁
+  department:
     - 首席特别代表
     - 核心开发组
   GitHub: latelee
   email: li@latelee.org
   URL: 'https://www.latelee.org'
 
+## 算法组
+- name: 邹中元
+  title: 高级算法工程师
+  city: 南宁
+  department:
+    - 算法组
+  GitHub: zouzhongy
+  URL: 'https://github.com/zouzhongy'
+
 - name: lambda666
-  project:
-    - 核心开发组
+  title: 高级算法工程师
+  city: 南宁
+  department:
+    - 算法组
   GitHub: lambda666
   URL: 'https://github.com/lambda666'
 
+## 其它组
 - name: Li Smith
-  project:
+  title: 高级工程师
+  city: 南宁
+  department:
     - 核心开发组
   GitHub: baidang201
 
 - name: 木木
-  project:
+  title: 高级工程师
+  city: 南宁
+  department:
     - 核心开发组
   GitHub: jiahaihuang
 
 - name: 小郭
-  project:
+  title: 高级工程师
+  city: 南宁
+  department:
     - 核心开发组
 
+## 网站 运维组
 - name: 徐沐枫
-  project:
-    - 核心开发组
+  title: 运维工程师
+  city: 南宁
+  department:
+    - 运维组
 
 - name: 柳其鸣
-  project:
-    - 核心开发组
+  title: 运维工程师
+  city: 南宁
+  department:
+    - 运维组
 
 - name: 曲商行
-  project:
-    - 核心开发组
+  title: 运维工程师
+  city: 南宁
+  department:
+    - 运维组
 
 
 # - name: 小桂哥
-#   project:
+#   department:
 #     - 核心开发组
 
 # - name: 邹宗远
-#   project:
+#   department:
 #     - 核心开发组
 
 # - name: 刘辰
-#   project:
+#   department:
 #     - 核心开发组
 
 # - name: 王昌林
-#   project:
+#   department:
 #     - 核心开发组
