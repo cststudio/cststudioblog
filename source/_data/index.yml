@@ -55,6 +55,20 @@ principle:
   - title: 合作
     icon: handshake
 
+mission:
+  - title: ONVIF
+    icon: code-branch
+  - title: Docker
+    icon: link
+  - title: Kubernetes
+    icon: seedling
+  - title: 开源项目
+    icon: project-diagram
+  - title: MFC
+    icon: project-diagram
+  - title: H264
+    icon: project-diagram
+
 partner:
   # - title: 极米微特
   #   logo: 
