@@ -1,5 +1,6 @@
 ---
 title: CST工作室
+urlname: about
 date: 2019-11-23 13:09:23
 authors:
   - cststudio

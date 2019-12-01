@@ -2,6 +2,7 @@
 layout: project
 
 title: H.264码流分析器
+urlname: h264bsanalyzer
 categories:
   - Project
 tags:

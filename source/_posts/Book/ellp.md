@@ -1,6 +1,6 @@
 ---
 layout: book
-
+urlname: book
 title: 电子书
 categories:
   - Book

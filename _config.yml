@@ -26,7 +26,7 @@ root: /
 #permalink_defaults:
 # 分类/文章url 注：分类映射见下面，文章url在各个md文件中必须指定
 # 这样，文档名为中文（可以添加日期），在内的urlname设置对应的英文名，比较好
-permalink: :category/:urlname.html
+permalink: :category/:urlname/
 permalink_defaults:
   url: untitle
 

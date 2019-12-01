@@ -19,6 +19,12 @@ main.ejs
 component/byline.ejs
 
 
+
+文章说明：
+最新状态：
+图片要设置。
+URL转换要带 / ，因为main.ejs有个图片源要使用到路径分隔，否则不显示。  
+
 多语言支持：
 https://hexo.io/docs/permalinks.html#Multi-language-Support
 https://hexo.io/docs/internationalization.html

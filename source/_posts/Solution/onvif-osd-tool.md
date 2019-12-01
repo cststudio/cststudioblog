@@ -1,6 +1,7 @@
 ---
 layout: solution
 title: ONVIF OSD 叠加器
+urlname: onvif-osd-tool
 categories:
   - Solution
 

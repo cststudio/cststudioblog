@@ -1,5 +1,6 @@
 ---
 title: 版权声明
+urlname: license
 categories:
   - Profile
 date: 2019-11-23 18:48:45

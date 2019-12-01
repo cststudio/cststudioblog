@@ -1,5 +1,6 @@
 ---
 title: 联系我们
+urlname: contact
 categories:
   - Profile
 date: 2019-11-23 18:48:45

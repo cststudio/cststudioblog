@@ -1,5 +1,6 @@
 ---
 title: HID协议
+urlname: hid1.11-spec
 authors:
   - latelee
 categories:

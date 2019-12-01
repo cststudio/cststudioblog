@@ -7,7 +7,7 @@
   }
 </style>
 
-<% const {banner, principle, partner} = site.data.index; %>
+<% const {banner, principle, mission, partner} = site.data.index; %>
 
 <div class="jumbotron jumbotron-home">
   <div class="container">
@@ -27,12 +27,28 @@
       <h2 class="m-auto">我们的理念</h2>
     </div> -->
 
-    <div class="flow-box text-center text-small mt-6">
+    <div class="flow-box text-center text-small mt-3">
     <%-
       include('./component/gallery', {
         type:    'icon',
         gallery: principle,
-        size:    '10x'
+        size:    '9x'
+      })
+    %>
+    </div>
+
+    <hr>
+
+    <div class="row text-center mt-6 mb-4">
+      <h2 class="m-auto">厚积薄发</h2>
+    </div>
+
+    <div class="flow-box text-center text-small mt-3">
+    <%-
+      include('./component/gallery', {
+        type:    'icon',
+        gallery: mission,
+        size:    '6x'
       })
     %>
     </div>
@@ -72,7 +88,7 @@
   <div class="container-narrow text-center">
     <h1>最新动态</h1>
     <p class="lead">
-      
+      <!-- 暂无 -->
     </p>
     <div class="row mt-8">
       <% getPosts({ filter: post => post.photos[0] }).forEach(({

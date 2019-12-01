@@ -1,5 +1,6 @@
 ---
 title: ONVIF Profile S 协议
+urlname: onvif-profile-s-spec
 authors:
   - latelee
 categories:

@@ -1,5 +1,6 @@
 ---
 title: ONVIF 核心协议(v2.6)
+urlname: onvif-core-spec
 authors:
   - latelee
 categories:

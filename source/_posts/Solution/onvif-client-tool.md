@@ -1,6 +1,7 @@
 ---
 layout: solution
 title: ONVIF 客户端工具
+urlname: onvif-client-tool
 categories:
   - Solution
 

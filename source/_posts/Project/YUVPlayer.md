@@ -2,6 +2,7 @@
 layout: project
 
 title: YUV 播放器
+urlname: yuvplayer
 categories:
   - Project
 tags:
