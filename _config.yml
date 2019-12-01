@@ -22,8 +22,14 @@ lead2: 所有苦逼都是傻逼般的不放弃。
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://www.cststudio.com.cn/
 root: /
-permalink: :title/
+#permalink: :title/
+#permalink_defaults:
+# 分类/文章url 注：分类映射见下面，文章url在各个md文件中必须指定
+# 这样，文档名为中文（可以添加日期），在内的urlname设置对应的英文名，比较好
+permalink: :category/:urlname.html
 permalink_defaults:
+  url: untitle
+
 
 # Directory
 source_dir: source

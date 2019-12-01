@@ -1,5 +1,6 @@
 ---
-title: 下载k8s镜像
+title: 下载k8s镜像的一种方法
+urlname: download-k8s-images
 authors:
   - latelee
 categories:
