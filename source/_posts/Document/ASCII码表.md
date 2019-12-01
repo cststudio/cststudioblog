@@ -16,32 +16,32 @@ ASCII码表。
   Dec | Hex |   Bin    |  Html   |              Char               | Description 
  -----|-----|----------|---------|---------------------------------|------------- 
     0 | 00  | 00000000 | `&#0;`  | NUL (Null)                      | 空字符         
-    1 | 01  | 00000001 | `&#1;`  | SOH (Start of Header)           | 标题开始        
-    2 | 02  | 00000010 | `&#2;`  | STX (Start of Text)             | 正文开始        
-    3 | 03  | 00000011 | `&#3;`  | ETX (End of Text)               | 正文结束        
-    4 | 04  | 00000100 | `&#4;`  | EOT (End of Transmission)       | 传输结束        
-    5 | 05  | 00000101 | `&#5;`  | ENQ (Enquiry)                   | 查询          
-    6 | 06  | 00000110 | `&#6;`  | ACK (Acknowledge)               | 收到通知        
-    7 | 07  | 00000111 | `&#7;`  | BEL (Bell)                      | 响铃          
-    8 | 08  | 00001000 | `&#8;`  | BS (Backspace)                  | 退格          
-    9 | 09  | 00001001 | `&#9;`  | HT (Horizontal Tab)             | 水平制表符       
-   10 | 0A  | 00001010 | `&#10;` | LF (Line Feed)                  | 换行键         
-   11 | 0B  | 00001011 | `&#11;` | VT (Vertical Tab)               | 垂直制表符(home)       
-   12 | 0C  | 00001100 | `&#12;` | FF (Form Feed)                  | 换页键         
-   13 | 0D  | 00001101 | `&#13;` | CR (Carriage Return)            | 回车键         
-   14 | 0E  | 00001110 | `&#14;` | SO (Shift Out)                  | 不用切换(移出)        
-   15 | 0F  | 00001111 | `&#15;` | SI (Shift In)                   | 启用切换(移入)        
-   16 | 10  | 00010000 | `&#16;` | DLE (Data Link Escape)          | 数据链路转义      
-   17 | 11  | 00010001 | `&#17;` | DC1 (Device Control 1)          | 设备控制1       
-   18 | 12  | 00010010 | `&#18;` | DC2 (Device Control 2)          | 设备控制2       
-   19 | 13  | 00010011 | `&#19;` | DC3 (Device Control 3)          | 设备控制3       
-   20 | 14  | 00010100 | `&#20;` | DC4 (Device Control 4)          | 设备控制4       
-   21 | 15  | 00010101 | `&#21;` | NAK (Negative Acknowledge)      | 拒绝接收(反确认)        
-   22 | 16  | 00010110 | `&#22;` | SYN (Synchronize)               | 同步空闲        
-   23 | 17  | 00010111 | `&#23;` | ETB (End of Transmission Block) | 传输块结束       
-   24 | 18  | 00011000 | `&#24;` | CAN (Cancel)                    | 取消          
-   25 | 19  | 00011001 | `&#25;` | EM (End of Medium)              | 介质中断(媒体结束)        
-   26 | 1A  | 00011010 | `&#26;` | SUB (Substitute)                | 替补          
+    1 | 01  | 00000001 | `&#1;`  | SOH (Start of Header)           | 标题开始 (Ctrl/A)        
+    2 | 02  | 00000010 | `&#2;`  | STX (Start of Text)             | 正文开始  (Ctrl/B)       
+    3 | 03  | 00000011 | `&#3;`  | ETX (End of Text)               | 正文结束  (Ctrl/C)       
+    4 | 04  | 00000100 | `&#4;`  | EOT (End of Transmission)       | 传输结束   (Ctrl/D)      
+    5 | 05  | 00000101 | `&#5;`  | ENQ (Enquiry)                   | 查询(询问 ) (Ctrl/E)         
+    6 | 06  | 00000110 | `&#6;`  | ACK (Acknowledge)               | 收到通知(认可) (Ctrl/F)        
+    7 | 07  | 00000111 | `&#7;`  | BEL (Bell)                      | 响铃(Ctrl/G)          
+    8 | 08  | 00001000 | `&#8;`  | BS (Backspace)                  | 退格 (Ctrl/H)          
+    9 | 09  | 00001001 | `&#9;`  | HT (Horizontal Tab)             | 水平制表符 (Ctrl/I)       
+   10 | 0A  | 00001010 | `&#10;` | LF (Line Feed)                  | 换行键  (Ctrl/J)        
+   11 | 0B  | 00001011 | `&#11;` | VT (Vertical Tab)               | 垂直制表符(home) (Ctrl/K)      
+   12 | 0C  | 00001100 | `&#12;` | FF (Form Feed)                  | 换页键 (Ctrl/L)         
+   13 | 0D  | 00001101 | `&#13;` | CR (Carriage Return)            | 回车键  (Ctrl/M)        
+   14 | 0E  | 00001110 | `&#14;` | SO (Shift Out)                  | 不用切换(移出) (Ctrl/N)        
+   15 | 0F  | 00001111 | `&#15;` | SI (Shift In)                   | 启用切换(移入)  (Ctrl/O)       
+   16 | 10  | 00010000 | `&#16;` | DLE (Data Link Escape)          | 数据链路转义  (Ctrl/P)     
+   17 | 11  | 00010001 | `&#17;` | DC1 (Device Control 1)          | 设备控制1 (Ctrl/Q)      
+   18 | 12  | 00010010 | `&#18;` | DC2 (Device Control 2)          | 设备控制2 (Ctrl/R)      
+   19 | 13  | 00010011 | `&#19;` | DC3 (Device Control 3)          | 设备控制3 (Ctrl/S)       
+   20 | 14  | 00010100 | `&#20;` | DC4 (Device Control 4)          | 设备控制4(Ctrl/T)       
+   21 | 15  | 00010101 | `&#21;` | NAK (Negative Acknowledge)      | 拒绝接收(反确认) (Ctrl/U)        
+   22 | 16  | 00010110 | `&#22;` | SYN (Synchronize)               | 同步空闲  (Ctrl/V)       
+   23 | 17  | 00010111 | `&#23;` | ETB (End of Transmission Block) | 传输块结束 (Ctrl/W)      
+   24 | 18  | 00011000 | `&#24;` | CAN (Cancel)                    | 取消  (Ctrl/X)         
+   25 | 19  | 00011001 | `&#25;` | EM (End of Medium)              | 介质中断(媒体结束) (Ctrl/Y)       
+   26 | 1A  | 00011010 | `&#26;` | SUB (Substitute)                | 替补 (Ctrl/Z)         
    27 | 1B  | 00011011 | `&#27;` | ESC (Escape)                    | 溢出(转意)          
    28 | 1C  | 00011100 | `&#28;` | FS (File Separator)             | 文件分割符(向右键)       
    29 | 1D  | 00011101 | `&#29;` | GS (Group Separator)            | 组分割符(向左键)         
