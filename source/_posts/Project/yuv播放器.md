@@ -10,7 +10,7 @@ tags:
 
 description: 基于 MFC 的 YUV 播放器
 
-logo: 
+logo: icon.png
 repository: https://github.com/YUVPlayer
 ---
 
