@@ -1,16 +1,21 @@
 ---
-title: armdocker：在arm平台搭建docker环境
+title: ARM 平台搭建docker环境实录
 urlname: armdocker-build-docker-on-arm
 tags:
   - armdocker
 categories:
   - Solution
+  - Docker
 date: 2019-12-01 16:24:15
 ---
 
-## 一、背景
+<center><h1>ARM平台搭建docker环境实录</h1></center>
+<center>迟思堂工作室</center>
+  
 
-本文介绍的是在 arm 平台上搭建 docker 运行环境。使用的是 buildroot 构建所有的内容。本文实验的步骤和解题思路有局限性，但也有一定实践性。理论上，所有自行搭建 docker 环境的，均可参考本文。本文内容较多，请酌情阅读。  
+## 一、背景
+在主流发行版的 Linux 系统运行 Docker 是十分简单的事，只需一条命令即可。而 ARM 平台，如 TK1、树莓派等，使用 Debian 或 Ubuntu 或其衍生系统，亦是闲事。  
+本文尝试是在 ARM 平台使用 buildroot 构建的系统上搭建 docker 运行环境。本实录的步骤和解题思路有局限性，但也有一定实践性。理论上，所有自行搭建 docker 环境的，均可参考本文。本文内容较多，请酌情阅读。  
 
 <!-- more -->
 
@@ -18,10 +23,7 @@ date: 2019-12-01 16:24:15
 本文内容有一定难度，涉及东西较多，需要知道内核的 Makefile 和 Kconfig ，熟悉 make menuconfig（kernel/busybox/buildroot/cross-ng 等，均用该方式），知道内核配置，如编译为模块（`M`），编译进内核（`*`）。
 
 ## 三、要点
-在 arm 平台运行 Docker 是十分简单的事，如在树莓派系统中，只需一条命令即可。  
-
 Docker 需要使用 systemd 来启动，不能直接用 `/usr/bin/dockerd -H fd://` 来启动。使用 buildroot ，需要选择 systemd 代替默认的 init 机制。  
-
 systemd 需要额外的库，buildroot 版本太低不支持。新版本默认有 Docker 的选项。建议使用2017年后的版本。  
 Docker 服务配置文件为 `/lib/systemd/system/docker.service`。启动相关命令（实验中会经常使用到）：  
 ```
@@ -35,22 +37,22 @@ systemctl restart docker
 systemctl status docker.service
 ```
 
-以上提到知识点，有兴趣者可自行查询。  
+以上提及知识点，有兴趣者可自行查询。  
 
 ## 四、心得
-在使用make menuconfig（包括但不限于kernel/busybox/buildroot/cross-ng等）时， 按 / ，输入要查询的关键字，确认位置。注意，在内核配置中，不需要添加 CONFIG_ 关键字。  
+在使用 make menuconfig（包括但不限于 kernel/busybox/buildroot/cross-ng 等）时， 按 / ，输入要查询的关键字，确认位置。注意，在内核配置中，不需要添加 CONFIG_ 关键字。  
 
-对于没有明显提示的配置，可以通过源码文件，或者Makefile、Kconfig来确定。  
+对于没有明显提示的配置，可以通过源码文件，或者 Makefile、Kconfig 来确定。  
 
 在一屏幕显示的选项内，按指定关键字可快速定位到选项。选项可以有多个。继续按即可。在ncurese界面以粗体显示。如在 Device Drivers中，按字母 p 可定位到  Parallel port support、PPS support、 PTP clock support、 Pin controllers、 Power supply class support。注意，只有当前屏幕上显示的才会定位到，屏幕外的无法定位，但可以按向下箭头翻页，可以将配置界面窗口最大化，描述看似复杂，有兴趣者尝试即知。  
 
-在重新编译后，一定要确认版本，如内核，可以通过 `uname -a` 得到编译时间，如buildroot，可以通过定入特定文件来确认。   
+在重新编译后，一定要确认版本，如内核，可以通过 `uname -a` 得到编译时间，如 buildroot，可以通过定入特定文件来确认。   
 
 ## 五、实验
 本文实验环境：  
 * buildroot: 2018.02 (busybox: 1.27.2)
 * kernel: 4.15 
-* 交叉编译器：buildroot构建，7.2
+* 交叉编译器：buildroot 构建，7.2
 
 本文针对 Docker 的配置，与此之外的，略过。  
 
