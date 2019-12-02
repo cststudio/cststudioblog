@@ -7,11 +7,17 @@ categories:
   - Project
 tags:
   - MFC
+  - YUV
 
 description: 基于 MFC 的 YUV 播放器
 
+license: BSP
 logo: icon.png
-repository: https://github.com/YUVPlayer
+photos: 
+  - yuvplayer_about.png
+  - yuvplayer_setting.png
+
+repository: https://github.com/latelee/YUVPlayer
 ---
 
 Windows MFC 工程，支持 Win7/Win10   

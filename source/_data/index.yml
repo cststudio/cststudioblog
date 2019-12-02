@@ -39,6 +39,10 @@ footNav:
   #   href: https://electronjs.org/languages
   - title: 联系我们
     href: /profile/contact
+  - title: electron
+    href: https://electronjs.org/
+  - title: kaiyuanshe
+    href: https://kaiyuanshe.cn/
 social:
   github:
     name: CSTStudio
@@ -58,16 +62,18 @@ principle:
 mission:
   - title: ONVIF
     icon: code-branch
-  - title: Docker
-    icon: link
-  - title: Kubernetes
-    icon: seedling
-  - title: 开源项目
-    icon: project-diagram
+  - title: RTSP
+    icon: star-half
   - title: MFC
-    icon: project-diagram
+    icon: suitcase
   - title: H264
     icon: project-diagram
+  - title: Docker
+    icon: link
+  - title: KubeEdge
+    icon: slash
+  - title: Kubernetes
+    icon: share
 
 partner:
   # - title: 极米微特

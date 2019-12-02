@@ -4,7 +4,7 @@
       <div class="clearfix pt-md-6">
         <div class="col-md-3 float-md-left pr-md-5 mb-3 mb-md-0">
           <div class="CircleBadge CircleBadge--large mx-auto box-shadow-large mt-1 bg-white">
-            <img class="CircleBadge-icon" src="<%= page.logo %>" alt='<%= page.title %>'>
+            <img class="CircleBadge-icon" src="<%= page.path + page.logo %>" alt='<%= page.title %>'>
           </div>
         </div>
         <div class="col-md-9 float-md-left pl-md-5 text-center text-md-left">
@@ -28,7 +28,7 @@
             <% if ( page.repository ) { %>
             <div class="app-meta-entry">
               <h5 class="mb-2 text-mono text-normal text-gray-light">源码仓库</h5>
-              <a href="<%= page.repository %>"><%= page.repository %></a>
+              <a href="<%= page.repository %>" target="_blank"><%= page.repository %></a>
             </div>
             <% } %>
 
@@ -58,9 +58,7 @@
 
           <% if ( page.photos[0] ) { %>
             <div class="app-box app-screenshots">
-              <div class="active-screenshot">
-                <img alt="not_used" />
-              </div>
+
               <div class="all-screenshots">
                 <% page.photos.forEach(photo => {
 
