@@ -1,5 +1,5 @@
 - name: 李迟
-  alias: 李迟
+#  alias: 李迟
   title: 首席架构师
   city: 南宁
   department:
@@ -29,17 +29,24 @@
 ## 其它组
 - name: Li Smith
   title: 高级工程师
-  city: 南宁
+  city: 深圳
   department:
     - 核心开发组
   GitHub: baidang201
 
 - name: 木木
   title: 高级工程师
-  city: 南宁
+  city: 深圳
   department:
     - 核心开发组
   GitHub: jiahaihuang
+
+- name: 何明桂
+  title: 高级工程师
+  city: 深圳
+  department:
+    - 核心开发组
+  URL: https://blog.csdn.net/hmg25
 
 - name: 小郭
   title: 高级工程师
