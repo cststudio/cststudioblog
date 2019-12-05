@@ -540,6 +540,33 @@ Linux 97071b6f98d8 4.14.100 #250 SMP PREEMPT Sat Nov 30 23:59:47 CST 2019 armv7l
 
 **到此，Docker 在ARM系统上搭建成功。**
 
+## 八、优化
+本节修改 Docker 镜像存储目录，以及加速 Docker 镜像下载速度。  
+先停止 Docker： 
+```
+systemctl stop docker
+```
+修改 /lib/systemd/system/docker.service 文件，在 ExecStart 命令后追加 `--graph <目录>`，示例：  
+```
+ExecStart=/usr/bin/dockerd -H fd:// --graph /mnt/docker
+```
+
+使用如下命令生成 /etc/docker/daemon.json 文件：  
+```
+echo -e "{
+  "registry-mirrors": [
+    "https://a8qh6yqv.mirror.aliyuncs.com",
+    "http://hub-mirror.c.163.com"
+  ]
+}" > /etc/docker/daemon.json
+```
+
+重新加载配置文件并启动 Docker 服务：
+```
+# systemctl daemon-reload  // 必须调用此命令，否则docker.service不生效
+# systemctl start docker
+```
+
 ## 附、杂事
 做ARM开发，十分考验人的耐性和技能，但也能提高人的耐性和技能。Docker出错提示的信息如“挤牙膏”，只有解决一部分，才会显出一部分，如此反复，此过程需要编译、升级，等，十分耗时。  
 细节十分重要。似乎无关联的事物，往往有联系。有些小地方不注意，就无法进行。如板子时间不正确，导致Dcoker镜像无法下载。  
