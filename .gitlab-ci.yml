@@ -5,7 +5,7 @@ send_job:
     - echo "install nodejs"
     - apt-get update -qq && apt-get install -y -qq nodejs
     - export TZ='Asia/Shanghai' # 更改时区
-    - npm install hexo-cli superagent cheerio -g
+    - npm install hexo-cli -g
     - npm install # 安装hexo及插件
   script:
     # 做些更新，再生成

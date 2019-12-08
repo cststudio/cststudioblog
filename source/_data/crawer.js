@@ -1,5 +1,5 @@
 /*
-npm install superagent
+npm install superagent cheerio
 npm install cheerio
 
 github api出现
