@@ -57,7 +57,7 @@ social:
     domain: https://github.com/
     title: Github Organization
 
-# 页脚导航
+# 页脚导航/友情链接
 footNav:
   - title: 版权声明
     href: /profile/license
@@ -72,6 +72,7 @@ footNav:
   - title: 科学社
     href: http://kxs-co.gicp.net/Linux/index.html
 
+# 大图标
 principle:
   - title: 专注
     #icon: feather-alt
@@ -83,21 +84,22 @@ principle:
   - title: 合作
     icon: handshake
 
-mission:
-  - title: ONVIF
-    icon: code-branch
-  - title: RTSP
-    icon: star-half
-  - title: MFC
-    icon: suitcase
-  - title: H264
-    icon: project-diagram
-  - title: Docker
-    icon: link
-  - title: KubeEdge
-    icon: slash
-  - title: Kubernetes
-    icon: share
+# 小图标
+# mission:
+#   - title: ONVIF
+#     icon: code-branch
+#   - title: RTSP
+#     icon: star-half
+#   - title: MFC
+#     icon: suitcase
+#   - title: H264
+#     icon: project-diagram
+#   - title: Docker
+#     icon: link
+#   - title: KubeEdge
+#     icon: slash
+#   - title: Kubernetes
+#     icon: share
 
 partitle: 合作伙伴
 parlead: 合作 共赢  共享

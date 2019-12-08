@@ -30,15 +30,12 @@
       })
     %>
     </div>
-
-    <hr>
 <% } %>
 
 <% if (mission) { %>
     <div class="row text-center mt-6 mb-4">
       <h2 class="m-auto">厚积薄发</h2>
     </div>
-
     <div class="flow-box text-center text-small mt-3">
     <%-
       include('./component/gallery', {
@@ -48,14 +45,12 @@
       })
     %>
     </div>
-  <hr>
 <% } %>
 
+<%- partial('./openworld') %>
 
     <h1>开源项目</h1>
-    <p class="lead">
-      开源，让生活更美好！
-    </p>
+    <p class="lead">开源，让生活更美好！</p>
     <div class="mt-9">
       <div class="mb-4">
         <% site.posts.forEach(({layout, path, title, logo, description}) => {
@@ -73,7 +68,7 @@
           </a>
         <% }) %>
       </div>
-      
+
       <p class="mt-6">
         <a class="btn-mktg btn-outline-mktg"  href="https://github.com/cststudio"  target='_blank'>
             <span class="octicon octicon-repo"></span>

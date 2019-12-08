@@ -1,0 +1,27 @@
+<% const {opentitle, openlead, update, openproject} = site.data.openworld; %>
+
+<% if (opentitle) { %>
+<h1><%= opentitle %></h1>
+<p class="lead"><%= openlead %></p>
+<div class="mt-9">
+  <div class="mb-4">
+      <table id="protocols" width="100%">
+          <tr align="left">
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;Name</th>
+            <th>&nbsp;&nbsp;Version</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Release Date</th>
+            </tr>
+    <% openproject.forEach(({name, version, time, href, download}) => { %>
+      <tr align="left">
+        <td><strong><%= name %></strong></td>
+        <td><a href="<%= download %>"><%= version %></a></td>
+        <td><%= time %></td>
+      </tr>
+    <% }) %>
+</table>
+<div class="text-right">
+last update: <%= update %>
+</div>
+  </div>
+</div>
+<% } %>

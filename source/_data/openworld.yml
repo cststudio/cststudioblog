@@ -1,0 +1,19 @@
+opentitle: 开源新闻
+openlead: 跟上开源的步伐
+update: "2019-12-08 22:48:22"
+openproject: 
+  - name: Docker
+    version: v19.03.5
+    time: "2019-11-14T18:42:08Z"
+    href: todo
+    download: https://github.com/docker/docker-ce/releases/tag/v19.03.5
+  - name: Kubernetes
+    version: v1.14.9
+    time: "2019-11-13T18:18:35Z"
+    href: todo
+    download: https://github.com/kubernetes/kubernetes/releases/tag/v1.14.9
+  - name: k3s
+    version: v1.0.0
+    time: "2019-11-19T01:07:01Z"
+    href: todo
+    download: https://github.com/rancher/k3s/releases/tag/v1.0.0

@@ -5,11 +5,14 @@ send_job:
     - echo "install nodejs"
     - apt-get update -qq && apt-get install -y -qq nodejs
     - export TZ='Asia/Shanghai' # 更改时区
-    - npm install hexo-cli -g
+    - npm install hexo-cli superagent cheerio -g
     - npm install # 安装hexo及插件
   script:
     # 做些更新，再生成
-    - 
+    - ls
+    - cd source/_data
+    - node crawer.js
+    - cd -
     - hexo clean # 清除
     - hexo g # 生成
 
