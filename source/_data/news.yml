@@ -1,0 +1,36 @@
+# 求索栏目的各子项目
+acttitle: 求索
+actlead: 
+  - text: 路漫漫其修远兮，吾将上下而求索。
+  - text: 宠辱不惊，看庭前花开花落；去留无意，望天空云卷云舒。
+
+# 按格式来赋值
+# 标题 方向，提示文字，图像、链接、按钮，等等
+actsub:
+  - title: 探索 Kubernetes
+    dir: left
+    alead:
+      - text: 容器时代早已来到，云计算深入人心，巨轮也已出发，何不跟着舵手踏上征程？
+    img: /image/Kubernetes-logo.png
+    alt: Kubernetes
+    button:
+      - type: info
+        href: /
+        text: Comming soon
+
+  - title: H.264/H.265码流分析器
+    dir: right
+    alead:
+      - text: Windows MFC工程，支持Win7/Win10
+      - text: 智能识别H.264&amp;H.265文件
+      - text: 具备播放H.264&amp;H.265裸码流功能
+      - text: 源码开放，自由使用
+    img: /project/h264bsanalyzer/v3.0_h264.png
+    alt: H264 Bitstream Analyzer
+    button:
+      - type: desktop-download
+        href: https://github.com/latelee/H264BSAnalyzer
+        text: 从 GitHub 下载
+      - type: info
+        href: /project/h264bsanalyzer/
+        text: 详细了解

@@ -4,19 +4,12 @@
 
 # Site
 title: CST工作室
-subtitle:  专注 极致 口碑
-description: CST工作室 迟思堂工作室
-keywords: 开源,迟思堂,迟思堂工作室,CST工作室
-author: CST工作室
+
 language: 
   - zh-CN
   - en
 
 timezone:
-
-lead3: 认认真真、踏踏实实做事，细致严谨。
-lead1: 所有牛逼背后都是苦逼堆积的坚持，
-lead2: 所有苦逼都是傻逼般的不放弃。
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -98,9 +91,9 @@ theme: Electron
 
 # logonav.png
 
-icon: image/favicon.ico
-logo: image/logo.png
-banner: image/bg.png
+# icon: image/favicon.ico
+# logo: image/logo.png
+# banner: image/bg.png
 
 # PWA plugin
 pwa:

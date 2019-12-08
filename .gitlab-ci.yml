@@ -5,10 +5,11 @@ send_job:
     - echo "install nodejs"
     - apt-get update -qq && apt-get install -y -qq nodejs
     - export TZ='Asia/Shanghai' # 更改时区
-    #- export bdurl="http://data.zz.baidu.com/urls?site=www.latelee.org&token="${bdtoken}
     - npm install hexo-cli -g
     - npm install # 安装hexo及插件
   script:
+    # 做些更新，再生成
+    - 
     - hexo clean # 清除
     - hexo g # 生成
 
@@ -21,7 +22,6 @@ send_job:
     - git add .
     - git commit -m "CI auto update"
     - git push --force --quiet "https://${GitlabToken}@github.com/cststudio/cststudio.github.io/" master:master
-    #- curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=www.latelee.org&token=kJPSxFFYjnuj0PrS"
     - echo "\r\npush done"
   only:
     - master

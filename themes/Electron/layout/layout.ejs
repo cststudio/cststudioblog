@@ -18,11 +18,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="renderer" content="webkit">
 
-  <title><%= config.title %> | <%= config.subtitle %></title>
 
-  <% const {social, headerNav, footNav} = site.data.index; %>
+  <% const {subtitle, author, beian, icon, logo, social, headerNav, footNav} = site.data.index; %>
 
-  <meta name="author" content="<%= config.author %>">
+  <title><%= config.title %> | <%= subtitle %></title>
+  <meta name="author" content="<%= author %>">
   <meta name="generator" content="hexo">
   <meta name="theme-color" content="#2f3241">
 
@@ -33,7 +33,7 @@
 
   <base href="/">
 
-  <link rel="shortcut icon" href="<%= config.icon %>">
+  <link rel="shortcut icon" href="<%= icon %>">
 
   <link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.7.2/css/all.min.css">
@@ -54,11 +54,9 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <!-- 网站logo -->
-      <a class="site-header-logo no-underline-hover" href=".">
-        <img class="site-header-icon" src="<%= config.logo %>">
-        <%= config.title %>
-      </a>
+      <a class="site-header-logo no-underline-hover" href="."> <!-- 网站logo -->
+        <img class="site-header-icon" src="<%= logo %>">
+        <%= config.title %></a>
       <!-- 标题导航 -->
       <nav class="site-header-nav">
         <% headerNav.forEach(({title, href, href_match, sub}, index) => { %>
@@ -80,8 +78,7 @@
             <% } %>
           </div>
         <% }) %> <!-- 导航结束 -->
-        <!-- 搜索 -->
-        <form action="search/" class="ais-search-box">
+        <form action="search/" class="ais-search-box"> <!-- 搜索 -->
           <input type="search" name="keyword" required placeholder="搜索"
             id="search-input" class="nav-search ais-search-box--input"
             aria-label="search-box" autocapitalize="off" autocorrect="off" role="textbox">
@@ -91,15 +88,9 @@
           title="<%= social.github.title %>">
           <span class="mega-octicon octicon-mark-github vertical-middle"></span>
         </a>
-        <!-- <a class="site-header-nav-item bordered lang-select-button" href="#Language" data-toggle="collapse">
-          中文
-        </a> -->
       </nav>
     </div>
   </header>
-  <!-- 暂时去掉语言，后续添加再开启 -->
-  <!-- <%- include('./component/language') %> -->
-
   <%- body %>
 
   <footer class="footer">
@@ -111,21 +102,10 @@
           </a>
         <% }) %>
       </nav>
-      <span>Copyright &copy; <a href="https://www.cststudio.com.cn/" >CST工作室</a> 2017-<%= date(new Date(), 'YYYY') %></span>
-      <a href="http://www.miitbeian.gov.cn/" rel="external nofollow"  target=_blank> 桂ICP备10003672号-2</a>
+      <span>Copyright &copy; <a href=<%= config.url %> ><%= config.title %></a> 2017-<%= date(new Date(), 'YYYY') %></span>
+      <a href="http://www.miitbeian.gov.cn/" rel="external nofollow" target=_blank> <%= beian %></a>
       <script src="https://s13.cnzz.com/z_stat.php?id=1273965306&web_id=1273965306" language="JavaScript"></script>
-
-      <span class="footer-social">
-        <% for (let name in social) { %>
-          <a class="footer-nav-item icon"
-            href="<%= (social[name].domain + '/' + social[name].name) %>"
-            title="<%= social[name].title %>">
-            <i class="devicon-<%= name %>-plain vertical-middle"></i>
-          </a>
-        <% } %>
-      </span>
     </div>
   </footer>
 </body>
-
 </html>
