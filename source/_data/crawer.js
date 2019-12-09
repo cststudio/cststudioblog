@@ -44,6 +44,10 @@ const userAgents = [
   'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 ];
 
+function sleep(sleepTime) {
+     for(var start = +new Date; +new Date - start <= sleepTime; ) { } 
+}
+
 function getbusybox()
 {
 var target = "https://busybox.net/downloads/";
@@ -158,7 +162,7 @@ Date.prototype.Format = function(fmt) { //author: meizz
 function main()
 {
     // 以写方式，相当于从头创建文件
-    fs.writeFile(file, "opentitle: 开源追踪\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' },  (err) => {});
+    fs.writeFile(file, "opentitle: 开源新闻\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' },  (err) => {});
     var myDate = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
     datetime = "update: \"" + myDate + "\"\r\n";
     fs.writeFile(file, datetime, { 'flag': 'a' },  (err) => {});
@@ -168,6 +172,10 @@ function main()
     github_release("Docker", "docker/docker-ce");
     github_release("Kubernetes", "kubernetes/kubernetes");
     github_release("k3s", "rancher/k3s");
+    github_release("KubeEdge", "kubeedge/kubeedge");
+    
+    github_release("TensorFlow", "tensorflow/tensorflow");
+    
 
     //getbusybox();
     //getkernel();
