@@ -12,24 +12,20 @@
 <html lang="<%= config.language %>">
 
 <head>
+  <% const {subtitle, description, keywords, author, beian, icon, logo, social, headerNav, footNav} = site.data.index; %>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="renderer" content="webkit">
-
-
-  <% const {subtitle, author, beian, icon, logo, social, headerNav, footNav} = site.data.index; %>
-
-  <title><%= config.title %> | <%= subtitle %></title>
   <meta name="author" content="<%= author %>">
-  <meta name="generator" content="hexo">
   <meta name="theme-color" content="#2f3241">
-
-  <!-- consumed by scripts/get-localized-strings -->
-  <meta name="localized.clipboard.copy" content="Copy">
-  <meta name="localized.clipboard.copy_to_clipboard" content="复制到剪贴板">
-  <meta name="localized.clipboard.copied" content="已复制">
+<% if (page.title){ %><title><%= page.title %> | <%= config.title %></title>
+<meta name="description" content="<%- page.excerpt %>" />
+<% if (page.tags && page.tags.length){ %><meta name="keywords" content="<% page.tags.forEach(function(tag, i){ %><%- tag.name %><% if (page.tags.length!=i+1){ %>,<% }%> <% }) %>" /><% } else { %><% if (keywords){ %><meta name="keywords" content="<%- keywords %>" /><% }%><% }%>
+<% } else { %><title><%= config.title %> | <%= subtitle %></title>
+<meta name="description" content="<%- description %>" />
+<% if (keywords){ %><meta name="keywords" content="<%- keywords %>" /><% }%>
+<% }%>
   <base href="/">
   <link rel="shortcut icon" href="<%= icon %>">
   <link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -53,8 +49,7 @@
       <a class="site-header-logo no-underline-hover" href="."> <!-- 网站logo -->
         <img class="site-header-icon" src="<%= logo %>">
         <%= config.title %></a>
-      <!-- 标题导航 -->
-      <nav class="site-header-nav">
+      <nav class="site-header-nav"><!-- 标题导航 -->
         <% headerNav.forEach(({title, href, href_match, sub}, index) => { %>
           <div class="site-header-nav-item">
             <% if (! sub) { %>
@@ -88,14 +83,11 @@
     </div>
   </header>
   <%- body %>
-
   <footer class="footer">
     <div class="container">
       <nav class="footer-nav">
         <% footNav.forEach(({href, title}, index) => { %>
-          <a class="footer-nav-item <%= index ? '' : 'active' %>" href="<%= href %>">
-            <%= title %>
-          </a>
+          <a class="footer-nav-item <%= index ? '' : 'active' %>" href="<%= href %>"><%= title %></a>
         <% }) %>
       </nav>
       <span>Copyright &copy; <a href=<%= config.url %> ><%= config.title %></a> 2017-<%= date(new Date(), 'YYYY') %></span>

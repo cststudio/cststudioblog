@@ -158,18 +158,17 @@ Date.prototype.Format = function(fmt) { //author: meizz
 function main()
 {
     // 以写方式，相当于从头创建文件
-    fs.writeFile(file, "opentitle: 开源新闻\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' },  (err) => {});
+    fs.writeFile(file, "opentitle: 开源追踪\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' },  (err) => {});
     var myDate = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
     datetime = "update: \"" + myDate + "\"\r\n";
     fs.writeFile(file, datetime, { 'flag': 'a' },  (err) => {});
     
     fs.writeFile(file, "openproject: \r\n", { 'flag': 'a' },  (err) => {});
     
-    //github_release("mirror/busybox");
+    github_release("Docker", "docker/docker-ce");
     github_release("Kubernetes", "kubernetes/kubernetes");
     github_release("k3s", "rancher/k3s");
-    github_release("Docker", "docker/docker-ce");
-    
+
     //getbusybox();
     //getkernel();
 }
