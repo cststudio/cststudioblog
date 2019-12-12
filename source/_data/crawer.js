@@ -1,4 +1,9 @@
 /*
+功能：获取某些项目发布版本，生成指定格式到yml文件。
+不同项目页面不同，需要根据各自情况解析
+
+注：名称有空格的、时间等需要使用双引号，否则yml解析出错
+
 npm install superagent cheerio
 npm install cheerio
 
@@ -8,6 +13,8 @@ Request forbidden by administrative rules. Please make sure your request has a U
 ser-Agent header (http://developer.github.com/v3/#user-agent-required). Check ht
 tps://developer.github.com for other possible causes.
 解决：添加User-Agent
+
+
 
 */
 //导入依赖包
@@ -48,6 +55,10 @@ function sleep(sleepTime) {
      for(var start = +new Date; +new Date - start <= sleepTime; ) { } 
 }
 
+function trim(s){
+    return s.replace(/(^\s*)|(\s*$)/g, "");
+}
+
 function getbusybox()
 {
 var target = "https://busybox.net/downloads/";
@@ -57,15 +68,14 @@ superagent
         // 1.获取页面文档数据
         var content = response.text;
         var $ = cheerio.load(content);
-        var result=[];
+        var result = new Object();
         // 2. 找到 pre 内容
-        var linksDom = $("pre");
         // 3. pre只有一个元素，有换行，过滤，并逆转，找到tar.bz2那一行，即为最新版本
         // busybox-1.31.1.tar.bz2  2019-10-25 08:42  2.3M
-        linksDom.each((index, item) => {
+        $("pre").each((index, item) => {
             var text = $(item).text();
             text = text.split("\n").reverse();
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < text.length; i++)
             {
                 if (text[i].includes("tar.bz2"))
                 {
@@ -74,18 +84,27 @@ superagent
                     break;
                 }
             }
-            text = text.split(" ");
-            console.log(text);
+            result = text.split(" ");
+            //console.log(result);
+            var buffer = "";
+            buffer += "    - name: " + "Busybox" + "\r\n";
+            buffer += "      version: \"" + result[1].substring(8, result[1].length-8) + "\"\r\n";
+            buffer += "      time: \"" + result[3] + "\"\r\n";
+            buffer += "      href: " + "todo" + "\r\n";
+            buffer += "      download: " + "todo" + "\r\n";
+            fs.writeFileSync(file, buffer, { 'flag': 'a' });
         })
-        //将数组转换成字符串
-        result=JSON.stringify(result);
-
     });
 }
 
 
 function getkernel()
 {
+var buffer = "";
+buffer += "  - type: \"Kernel\"\r\n";
+buffer += "    project:\r\n";
+fs.writeFileSync(file, buffer, { 'flag': 'a' });
+
 var target = "https://www.kernel.org/";
 superagent
     .get(target)
@@ -93,29 +112,59 @@ superagent
         // 1.获取页面文档数据
         var content = response.text;
         var $ = cheerio.load(content);
-        var result=[];
-        // 2. 找到 pre 内容
-        var linksDom = $("pre");
-        // 3. pre只有一个元素，有换行，过滤，并逆转，找到tar.bz2那一行，即为最新版本
-        // busybox-1.31.1.tar.bz2  2019-10-25 08:42  2.3M
-        linksDom.each((index, item) => {
-            var text = $(item).text();
-            text = text.split("\n").reverse();
-            for (var i = 0; i < 100; i++)
-            {
-                if (text[i].includes("tar.bz2"))
+        var result = new Array();
+        // 2. 找到table 第一组为协议，第二组为最新版本，第三组为发布版本列表
+        $('table').each((index, item) => {
+            if (index != 0) { // 第一组table不需要
+                var text = $(item).text();
+                text = text.split("\n");
+                for (var i = 0; i < text.length; i++)
                 {
-                    console.log("content ", text[i]);
-                    text = text[i];
-                    break;
+                    //text[i] = text[i].trim(); // 过滤掉空格，但实际上还有
+                    text[i] = trim(text[i]); // 自实现函数过滤
+                    if (!text[i].match(/^[ ]*$/)) // 为安全起见，判断非空格
+                    {
+                        //console.log("content ", i, ": -", text[i], "-");
+                        result.push(text[i]); // 另建数组保存
+                    }
                 }
             }
-            text = text.split(" ");
-            console.log(text);
         })
-        //将数组转换成字符串
-        result=JSON.stringify(result);
-
+        
+        // 3.得到比较纯净的字符串，根据布局打印
+        for (var i = 0; i < result.length; i++)
+        {
+            var buffer = "";
+            //console.log("result ", i, ": +", result[i], "+");
+            if (result[i].includes("Latest Stable Kernel"))
+            {
+                result[i] = "最新稳定版"
+                console.log(`${result[i]} ${result[i+1]}`);
+                buffer += "    - name: " + result[i] + "\r\n";
+                buffer += "      version: " + result[i+1] + "\r\n";
+            }
+            else
+            {
+                if (result[i].includes("stable") ||
+                    result[i].includes("longterm") ||
+                    result[i].includes("linux-next"))
+                {
+                    if (result[i].includes("stable")) result[i] = "稳定版"
+                    if (result[i].includes("longterm")) result[i] = "长期支持版"
+                    if (result[i].includes("linux-next")) result[i] = "下一版"
+                    
+                    console.log(`${result[i]} ${result[i+1]} ${result[i+2]}`);
+                    // 注：name去掉最后一个字符冒号
+                    buffer += "    - name: " + result[i] + "\r\n";
+                    buffer += "      version: \"" + result[i+1] + "\"\r\n";
+                    buffer += "      time: \"" + result[i+2] + "\"\r\n";
+                    buffer += "      href: " + "todo" + "\r\n";
+                    buffer += "      download: " + "todo" + "\r\n";
+                }
+            }
+            // 追加方式
+            fs.writeFileSync(file, buffer, { 'flag': 'a' });
+        }
     });
 }
 
@@ -133,18 +182,18 @@ superagent
         //console.log(json);
         console.log(respo, "\r\n", cxt.tag_name, " ", cxt.html_url, " ", cxt.published_at);
         var buffer = "";
-        buffer += "  - name: " + name + "\r\n";
-        buffer += "    version: " + cxt.tag_name + "\r\n";
-        buffer += "    time: \"" + cxt.published_at + "\"\r\n";
-        buffer += "    href: " + "todo" + "\r\n";
-        buffer += "    download: " + cxt.html_url + "\r\n";
+        buffer += "    - name: " + name + "\r\n";
+        buffer += "      version: " + cxt.tag_name + "\r\n";
+        buffer += "      time: \"" + cxt.published_at.substr(0, 10) + "\"\r\n";
+        buffer += "      href: " + "todo" + "\r\n";
+        buffer += "      download: " + cxt.html_url + "\r\n";
         
         // 追加方式
-        fs.writeFile(file, buffer, { 'flag': 'a' },  (err) => {});
+        fs.writeFileSync(file, buffer, { 'flag': 'a' });
     });
 }
 
-Date.prototype.Format = function(fmt) { //author: meizz 
+Date.prototype.Format = function(fmt) {
     var o = {
         "M+": this.getMonth() + 1, //月份 
         "d+": this.getDate(), //日 
@@ -159,26 +208,80 @@ Date.prototype.Format = function(fmt) { //author: meizz
     return fmt;
 }
 
-function main()
+function make_devops()
 {
-    // 以写方式，相当于从头创建文件
-    fs.writeFile(file, "opentitle: 开源新闻\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' },  (err) => {});
-    var myDate = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
-    datetime = "update: \"" + myDate + "\"\r\n";
-    fs.writeFile(file, datetime, { 'flag': 'a' },  (err) => {});
-    
-    fs.writeFile(file, "openproject: \r\n", { 'flag': 'a' },  (err) => {});
-    
+    var buffer = "";
+    buffer += "  - type: Devops\r\n";
+    buffer += "    project:\r\n";
+
+    // 追加方式
+    fs.writeFileSync(file, buffer, { 'flag': 'a' });
+
     github_release("Docker", "docker/docker-ce");
     github_release("Kubernetes", "kubernetes/kubernetes");
     github_release("k3s", "rancher/k3s");
     github_release("KubeEdge", "kubeedge/kubeedge");
-    
+}
+
+function make_ai()
+{
+    var buffer = "";
+    buffer += "  - type: Deep Learning\r\n";
+    buffer += "    project:\r\n";
+    fs.writeFileSync(file, buffer, { 'flag': 'a' });
+
     github_release("TensorFlow", "tensorflow/tensorflow");
+}
+
+function make_misc()
+{
+    var buffer = "";
+    buffer += "  - type: Linux world\r\n";
+    buffer += "    project:\r\n";
+    fs.writeFileSync(file, buffer, { 'flag': 'a' });
+
+    getbusybox();
+
+}
+// TODO 要延时一段时间后再执行另外的，或说要同步
+// 这是版本追踪的函数
+function main1()
+{
+    // 以写方式，相当于从头创建文件
+    fs.writeFileSync(file, "opentitle: 开源追踪\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' });
+    var myDate = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
+    datetime = "update: \"" + myDate + "\"\r\n";
+    fs.writeFileSync(file, datetime, { 'flag': 'a' });
     
+    fs.writeFileSync(file, "openproject: \r\n", { 'flag': 'a' });
+
+    var time = 2;
+    // 使用定时超时方式控制前后顺序，否则yml文件会乱
+    setTimeout(getkernel, time*1000);
+    time += 20;
+    setTimeout(make_misc, time*1000);
+    time += 20;
+    setTimeout(make_devops, time*1000);
+    time += 20;
+    setTimeout(make_ai, time*1000);
+
+    //make_devops();
+    //make_ai();
 
     //getbusybox();
     //getkernel();
+}
+
+// 获取版本发布日期的函数
+function main2()
+{
+
+}
+
+function main()
+{
+    main1();
+    //main2();
 }
 
 main();
