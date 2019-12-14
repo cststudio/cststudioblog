@@ -2,7 +2,7 @@
 acttitle: 求索
 actlead: 
   - text: 路漫漫其修远兮，吾将上下而求索。
-  - text: 宠辱不惊，看庭前花开花落；去留无意，望天空云卷云舒。
+  #- text: 宠辱不惊，看庭前花开花落；去留无意，望天空云卷云舒。
 
 # 按格式来赋值
 # 标题 方向，提示文字，图像、链接、按钮，等等
@@ -18,19 +18,31 @@ actsub:
         href: /
         text: Comming soon
 
-  - title: H.264/H.265码流分析器
+  - title: 《嵌入式Linux入门与实践》
     dir: right
     alead:
-      - text: Windows MFC工程，支持Win7/Win10
-      - text: 智能识别H.264&amp;H.265文件
-      - text: 具备播放H.264&amp;H.265裸码流功能
-      - text: 源码开放，自由使用
-    img: /project/h264bsanalyzer/v3.0_h264.png
-    alt: H264 Bitstream Analyzer
+      - text: 以作者十年研发之经验，总结成书
+      - text: 电子书籍，自由阅读
+    img: /image/ellp.png
+    alt: no
     button:
-      - type: desktop-download
-        href: https://github.com/latelee/H264BSAnalyzer
-        text: 从 GitHub 下载
       - type: info
-        href: /project/h264bsanalyzer/
-        text: 详细了解
+        href: /
+        text: 即将来到
+
+  # - title: H.264/H.265码流分析器
+  #   dir: right
+  #   alead:
+  #     - text: Windows MFC工程，支持Win7/Win10
+  #     - text: 智能识别H.264&amp;H.265文件
+  #     - text: 具备播放H.264&amp;H.265裸码流功能
+  #     - text: 源码开放，自由使用
+  #   img: /project/h264bsanalyzer/v3.0_h264.png
+  #   alt: H264 Bitstream Analyzer
+  #   button:
+  #     - type: desktop-download
+  #       href: https://github.com/latelee/H264BSAnalyzer
+  #       text: 从 GitHub 下载
+  #     - type: info
+  #       href: /project/h264bsanalyzer/
+  #       text: 详细了解

@@ -11,7 +11,8 @@ send_job:
     # 做些更新，再生成
     - ls
     - cd source/_data
-    - node crawer.js
+    - chmod +x cron.sh
+    - sh cron.sh
     - cd -
     - hexo clean # 清除
     - hexo g # 生成

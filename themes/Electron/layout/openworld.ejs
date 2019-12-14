@@ -3,7 +3,7 @@
 <h1><%= opentitle %></h1>
 <p class="lead"><%= openlead %></p>
 <% openproject.forEach(({type, project}) => { %>
-  <div class="text-center"><br> <%= type %></div>
+<% if (type) {%>  <div class="text-center"><br> <%= type %></div><% } %>
 <div class="mt-9 mb-4">
       <table id="protocols" width="100%">
           <tr align="left">
@@ -11,7 +11,7 @@
             <th>&nbsp;&nbsp;Version</th>
             <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Release Date</th>
             </tr>
-
+<% if (project) {%>
     <% project.forEach(({name, version, time, href, download}) => { %>
       <tr align="left">
         <td><strong><%= name %></strong></td>
@@ -19,9 +19,9 @@
         <td><%= time %></td>
       </tr>
     <% }) %>
+<% } %>
 </table>
 </div>
 <% }) %>
-
 <div class="text-right"><br>last check: <%= update %></div>
 <% } %>

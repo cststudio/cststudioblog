@@ -6,15 +6,11 @@
     margin-bottom: 1rem;
   }
 </style>
-<% const {lead, banner, principle, mission, partitle, parlead, partner} = site.data.index; %>
+<% const {banner, principle, mission, partitle, parlead, partner} = site.data.index; %>
 <div class="jumbotron jumbotron-home">
   <div class="container">
-    <div class="hero text-center">
-      <img src="<%= banner %>">
-    </div>
-    <p class="jumbotron-lead text-center">
-      <% lead.forEach(({text}, index) => { %><%= text %> <br> <% }) %>
-    </p>
+    <div class="hero text-center"><img src="<%= banner %>"></div>
+<%- partial('./mainlead') %>
   </div>
 </div>
 

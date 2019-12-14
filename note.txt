@@ -20,6 +20,11 @@ component/byline.ejs
 
 
 ====================================
+网站更新说明
+每天0点抓取开源项目发布版本。
+每天变更网站提示语。——随机，单独一个文件
+
+====================================
 网站使用说明：
 最新状态：
 图片要设置。
@@ -37,3 +42,32 @@ https://stackoverflow.com/questions/50676087/how-to-dynamically-change-language-
 
 资源列表：
 https://github.com/cststudio/toolchain
+
+
+yaml学习：
+# 网站提示语，这是数组形式，按格式添加即可
+lead: 
+  - group: 
+    - text: 认认真真、踏踏实实做事，细致严谨。
+  - group:
+    - text: 所有牛逼背后都是苦逼堆积的坚持，
+    - text: 所有苦逼都是傻逼般的不放弃。
+  - group:
+    - text: 以有所得之心，求无所得之果
+    - text: 宠辱不惊，看庭前花开花落；去留无意，望天空云卷云舒
+
+使用：
+<% const {lead} = site.data.mainlead; %>
+
+<% if (lead) {%>
+
+<p class="jumbotron-lead text-center">
+      <% lead.forEach(({group}, index) => { %>
+        <% group.forEach(({text}, index) => { %>
+          <%= text %> <br> 
+        <% }) %>
+
+      <% }) %>
+</p>
+
+<% } %>
