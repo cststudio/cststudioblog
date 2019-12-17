@@ -8,7 +8,7 @@ send_job:
     - npm install hexo-cli -g
     - npm install # 安装hexo及插件
     # 下载生成好的网站文件，里面有些文件需要用到
-    - git clone https://github.com/cststudio/cststudio.github.io/ tmp/git/
+    - git clone https://github.com/cststudio/cststudio.github.io/ /tmp/git/
   script:
     # 做些更新，再生成
     - ls
