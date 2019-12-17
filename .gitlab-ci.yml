@@ -7,6 +7,8 @@ send_job:
     - export TZ='Asia/Shanghai' # 更改时区
     - npm install hexo-cli -g
     - npm install # 安装hexo及插件
+    # 下载生成好的网站文件，里面有些文件需要用到
+    - git clone https://github.com/cststudio/cststudio.github.io/ tmp/git/
   script:
     # 做些更新，再生成
     - ls
@@ -20,6 +22,9 @@ send_job:
   after_script:
     - echo "after script..."
     - cd ./public
+    - rm ./book/ep ./book/ellp || true  # 尝试删除已有的，用true不会报错  ep是临时的，后面要删除
+    - cp -a /tmp/git/book/ep ./book || true
+    - cp -a /tmp/git/book/ellp ./book || true
     - git init
     - git config user.name  "CST Studio"
     - git config user.email "cst@cststudio.com.cn"
