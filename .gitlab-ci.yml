@@ -12,6 +12,7 @@ send_job:
   script:
     # 做些更新，再生成
     - ls
+    - ls -lh /tmp/git/
     - cd source/_data
     - chmod +x cron.sh
     - sh cron.sh
