@@ -20,7 +20,7 @@
   <meta name="author" content="<%= author %>">
   <meta name="theme-color" content="#2f3241">
 <% if (page.title){ %><title><%= page.title %> | <%= config.title %></title>
-<meta name="description" content="<%- page.excerpt %>" />
+<meta name="description" content="<%- strip_html(markdown(page.excerpt)) %>" />
 <% if (page.tags && page.tags.length){ %><meta name="keywords" content="<% page.tags.forEach(function(tag, i){ %><%- tag.name %><% if (page.tags.length!=i+1){ %>,<% }%> <% }) %>" /><% } else { %><% if (keywords){ %><meta name="keywords" content="<%- keywords %>" /><% }%><% }%>
 <% } else { %><title><%= config.title %> | <%= subtitle %></title>
 <meta name="description" content="<%- description %>" />
