@@ -2,10 +2,9 @@
 title: ARM 平台搭建docker环境实录
 urlname: armdocker-build-docker-on-arm
 tags:
-  - armdocker
+  - Docker
 categories:
   - Solution
-  - Docker
 date: 2019-12-01 16:24:15
 ---
 
