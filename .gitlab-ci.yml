@@ -32,6 +32,13 @@ send_job:
     - git add .
     - git commit -m "CI auto update"
     - git push --force --quiet "https://${GitlabToken}@github.com/cststudio/cststudio.github.io/" master:master
+    # 压缩
+    - tar jcf ../site.tar.bz2 .
+    # 拷贝文件，使用-p，防止出错
+    - sshpass -p "$PASSWD" scp -o StrictHostKeyChecking=no ../site.tar.bz2 $USER@$HOST:/tmp/ || exit 1 
+    # 远程云主机解压
+    - sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "cd /home/latelee/docker/composefile/websites/ && rm -rf html_cst/* && tar xf /tmp/site.tar.bz2 -C html_cst/ && docker-compose restart cst" || exit 1
     - echo "\r\npush done"
+
   only:
     - master
