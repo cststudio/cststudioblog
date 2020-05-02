@@ -14,4 +14,4 @@ date: 2019-11-23 18:48:45
 
 ## 欢迎捐赠
 
-![](image/latelee_pay-300x181.png)
+![](image/latelee_pay_small.png)
