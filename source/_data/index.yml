@@ -3,8 +3,8 @@
 # 网站信息，注：title由于其它js使用到，放到config文件
 subtitle:  专注 极致 口碑
 description: CST工作室官方网站，专注软件开发
-keywords: 开源,迟思堂,迟思堂工作室,CST工作室
-author: CST工作室
+keywords: 开源,迟思堂,迟思堂工作室,CST工作室,CST研习舍
+author: CST研习舍
 beian: 桂ICP备10003672号-2
 
 # 图像相关
@@ -95,27 +95,27 @@ principle:
 #   - title: Kubernetes
 #     icon: share
 
-partitle: 合作伙伴
-parlead: 合作 共赢  共享
-partner:
-  # - title: 极米微特
-  #   logo: 
-  #   URL: 
-  #   description: 战略合作
-  - title: 阿里云
-    logo: image/3part/aliyun.jpg
-    URL: https://www.aliyun.com/
-    description: 云服务
-  - title: 腾讯企业邮箱
-    logo: image/3part/exmail.jpg
-    URL: https://exmail.qq.com/
-    description: 邮箱服务
-  - title: GitHub
-    logo: image/3part/github.jpg
-    URL: https://github.com/
-    description: 源码托管
-  - title: DockerHub
-    logo: image/3part/docker.jpg
-    URL: https://hub.docker.com/
-    description: Docker服务
+#partitle: 合作伙伴
+#parlead: 合作 共赢  共享
+#partner:
+#  # - title: 极米微特
+#  #   logo: 
+#  #   URL: 
+#  #   description: 战略合作
+#  - title: 阿里云
+#    logo: image/3part/aliyun.jpg
+#    URL: https://www.aliyun.com/
+#    description: 云服务
+#  - title: 腾讯企业邮箱
+#    logo: image/3part/exmail.jpg
+#    URL: https://exmail.qq.com/
+#    description: 邮箱服务
+#  - title: GitHub
+#    logo: image/3part/github.jpg
+#    URL: https://github.com/
+#    description: 源码托管
+#  - title: DockerHub
+#    logo: image/3part/docker.jpg
+#    URL: https://hub.docker.com/
+#    description: Docker服务
     

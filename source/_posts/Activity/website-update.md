@@ -1,5 +1,5 @@
 ---
-title: CST工作室官网全新上线了！
+title: CST研习舍全新上线了！
 urlname: website-update
 authors:
   - latelee
@@ -10,7 +10,7 @@ date: 2019-11-29 00:00:00
 photos: 1.jpg
 ---
 
-CST工作室官网全新上线了！  
+CST研习舍全新上线了！  
 
 感谢徐沐枫、曲商行的努力！  
 

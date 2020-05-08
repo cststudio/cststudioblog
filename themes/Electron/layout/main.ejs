@@ -120,25 +120,4 @@
 
 <%- partial('./news') %>
 
-<section class="page-section page-section-spacious bg-shade" id="Partner">
-  <div class="container-narrow text-center">
-    <h1><%= partitle %></h1>
-    <p class="lead"><%= parlead %></p>
-    <div class="mt-9">
-      <div class="mb-4">
-        <% partner.forEach(({ title, logo, URL, description}) => { %>
 
-          <a href="<%= URL %>" title="<%= title %>" class="featured-app">
-            <div class="featured-app-logo-wrapper">
-              <img class="featured-app-logo" alt="<%= title %>" src="<%= logo %>">
-            </div>
-            <div class="featured-app-name"><%= title %></div>
-            <div class="featured-app-description mt-3">
-              <%= description %>
-            </div>
-          </a>
-        <% }) %>
-      </div>
-    </div>
-  </div>
-</section>
