@@ -6,7 +6,7 @@ send_job:
     - apt-get update -qq && apt-get install -y -qq nodejs sshpass
     - export TZ='Asia/Shanghai' # 更改时区
     - npm install hexo-cli -g
-    - npm install # 安装hexo及插件
+    - npm install || exit 1 # 安装hexo及插件
     # 下载生成好的网站文件，里面有些文件需要用到
     - git clone https://github.com/cststudio/cststudio.github.io/ /tmp/git/
   script:
@@ -32,12 +32,12 @@ send_job:
     - git add .
     - git commit -m "CI auto update"
     - git push --force --quiet "https://${GitlabToken}@github.com/cststudio/cststudio.github.io/" master:master
-    # 压缩
-    - tar jcf ../site.tar.bz2 .
-    # 拷贝文件，使用-p，防止出错
-    - sshpass -p "$PASSWD" scp -o StrictHostKeyChecking=no ../site.tar.bz2 $USER@$HOST:/tmp/ || exit 1 
-    # 远程云主机解压
-    - sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "cd /home/latelee/docker/composefile/websites/ && rm -rf html_cst/* && tar xf /tmp/site.tar.bz2 -C html_cst/ && docker-compose restart cst" || exit 1
+    
+    # 登陆到远程主机执行命令
+    - echo "try to download html in remote host..."
+    - sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "cd /home/latelee/docker/composefile/websites/html_cst && git pull" || exit 1
+    - echo "\r\npush done"
+    
     - echo "\r\npush done"
 
   only:
