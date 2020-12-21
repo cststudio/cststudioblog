@@ -23,7 +23,7 @@ send_job:
   after_script:
     - echo "after script..."
     - cd ./public
-    - rm ./book/ep ./book/ellp || true  # 尝试删除已有的，用true不会报错  ep是临时的，后面要删除
+    - rm ./book/ep ./book/ellp  -rf || true  # 尝试删除已有的，用true不会报错  ep是临时的，后面要删除
     - cp -a /tmp/git/book/ep ./book || true
     - cp -a /tmp/git/book/ellp ./book || true
     - git init
