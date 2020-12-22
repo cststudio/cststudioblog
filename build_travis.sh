@@ -45,5 +45,5 @@ sudo apt-get install -y sshpass
 
 # 登陆到远程主机执行命令
 echo "try to download html in remote host..."
-sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "cd ${WEBSITE} && git checkout . && git pull" || exit 1
-- echo "\r\npush done"
+sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "cd ${WEBSITE} && git fetch origin && git reset --hard origin/master" || exit 1
+echo "\r\npush done"
