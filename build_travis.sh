@@ -1,11 +1,11 @@
 #!/bin/bash
 
-uname -a
-g++ --version
-node -v
-npm -v
-
-ls -lh
+#uname -a
+#g++ --version
+#node -v
+#npm -v
+#
+#ls -lh
 
 # apt-get update -qq && apt-get install -y -qq software-properties-common
 # curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -29,11 +29,16 @@ hexo clean # 清除
 hexo g # 生成
 
 echo "after script..."
+
+# 如果有主页文件为空，退出
+if [ ! -s index.html ]; then echo "file is empty"; exit 1; fi
+
+
 cd ./public
 rm ./book/ep ./book/ellp  -rf || true # 尝试删除已有的，用true不会报错  ep是临时的，后面要删除
 cp -a /tmp/git/book/ep ./book || true
 cp -a /tmp/git/book/ellp ./book || true
-git init
+
 git config user.name  "CST Studio"
 git config user.email "cst@cststudio.com.cn"
 git add .
