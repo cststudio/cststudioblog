@@ -10,4 +10,3 @@ updated: 2016-04-01 16:18:31
 ---
 
 {% iframe manual/onvif-core-spec/ONVIF-Core-Specification-v2.6.pdf 100% 720px %}
-

@@ -8,7 +8,4 @@ categories:
 description: 基于 MFC 的 OSD 叠加器
 
 logo: image/open-hackathon.png
-
----
-
-一个MFC程序，OSD叠加器
+---一个 MFC 程序，OSD 叠加器

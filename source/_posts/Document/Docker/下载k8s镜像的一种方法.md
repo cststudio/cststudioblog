@@ -10,15 +10,16 @@ date: 2019-11-26 23:14:59
 updated: 2019-11-27 23:14:59
 ---
 
-部署k8s集群时，要使用众多来自 gcr.io 的镜像，但国内无法下载。需要使用镜像地址中转下载，最后重新改名，以保持与原始镜像一致。  
+部署 k8s 集群时，要使用众多来自 gcr.io 的镜像，但国内无法下载。需要使用镜像地址中转下载，最后重新改名，以保持与原始镜像一致。
 
 <!-- more -->
 
 脚本内容：
+
 ```shell
 #!/usr/bin/env bash
 # 脚本名称：pullk8s.sh
-# 使用：pullk8s.sh k8s.gcr.io/pause-amd64:3.0  
+# 使用：pullk8s.sh k8s.gcr.io/pause-amd64:3.0
 # 会自动转换地址，再修改镜像，保持与原来一致。
 # 来自：https://github.com/xuxinkun/littleTools/blob/master/azk8spull.sh
 # gcr.io也可以用阿里云的：registry.cn-hangzhou.aliyuncs.com/google_containers/
@@ -80,4 +81,4 @@ fi
 
 添加可执行属性：`chmod +x pullk8s.sh`。  
 放置系统 PATH 目录，如 /usr/bin。  
-使用：`pullk8s.sh k8s.gcr.io/pause-amd64:3.0`。  
+使用：`pullk8s.sh k8s.gcr.io/pause-amd64:3.0`。

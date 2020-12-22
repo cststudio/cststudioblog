@@ -18,16 +18,16 @@ tps://developer.github.com for other possible causes.
 
 */
 //导入依赖包
-const https       = require("https");
-const path       = require("path");
-const url        = require("url");
-const fs         = require("fs");
+const https = require('https');
+const path = require('path');
+const url = require('url');
+const fs = require('fs');
 
 var util = require('util');
 
-const superagent = require("superagent");
-const cheerio    = require("cheerio");
-const file = "openworld.yml";
+const superagent = require('superagent');
+const cheerio = require('cheerio');
+const file = 'openworld.yml';
 
 const userAgents = [
   'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12',
@@ -52,236 +52,237 @@ const userAgents = [
 ];
 
 function sleep(sleepTime) {
-     for(var start = +new Date; +new Date - start <= sleepTime; ) { } 
+  for (var start = +new Date(); +new Date() - start <= sleepTime; ) {}
 }
 
-function trim(s){
-    return s.replace(/(^\s*)|(\s*$)/g, "");
+function trim(s) {
+  return s.replace(/(^\s*)|(\s*$)/g, '');
 }
 
-function getbusybox()
-{
-var target = "https://busybox.net/downloads/";
-superagent
-    .get(target)
-    .end((error,response)=>{
-        // 1.获取页面文档数据
-        var content = response.text;
-        var $ = cheerio.load(content);
-        var result = new Object();
-        // 2. 找到 pre 内容
-        // 3. pre只有一个元素，有换行，过滤，并逆转，找到tar.bz2那一行，即为最新版本
-        // busybox-1.31.1.tar.bz2  2019-10-25 08:42  2.3M
-        $("pre").each((index, item) => {
-            var text = $(item).text();
-            text = text.split("\n").reverse();
-            for (var i = 0; i < text.length; i++)
-            {
-                if (text[i].includes("tar.bz2"))
-                {
-                    console.log("content ", text[i]);
-                    text = text[i];
-                    break;
-                }
-            }
-            result = text.split(" ");
-            //console.log(result);
-            var buffer = "";
-            buffer += "    - name: " + "Busybox" + "\r\n";
-            buffer += "      version: \"" + result[1].substring(8, result[1].length-8) + "\"\r\n";
-            buffer += "      time: \"" + result[3] + "\"\r\n";
-            buffer += "      href: " + "todo" + "\r\n";
-            buffer += "      download: " + "todo" + "\r\n";
-            fs.writeFileSync(file, buffer, { 'flag': 'a' });
-        })
-    });
-}
-
-
-function getkernel()
-{
-var buffer = "";
-buffer += "  - type: \"Kernel\"\r\n";
-buffer += "    project:\r\n";
-fs.writeFileSync(file, buffer, { 'flag': 'a' });
-
-var target = "https://www.kernel.org/";
-superagent
-    .get(target)
-    .end((error,response)=>{
-        // 1.获取页面文档数据
-        var content = response.text;
-        var $ = cheerio.load(content);
-        var result = new Array();
-        // 2. 找到table 第一组为协议，第二组为最新版本，第三组为发布版本列表
-        $('table').each((index, item) => {
-            if (index != 0) { // 第一组table不需要
-                var text = $(item).text();
-                text = text.split("\n");
-                for (var i = 0; i < text.length; i++)
-                {
-                    //text[i] = text[i].trim(); // 过滤掉空格，但实际上还有
-                    text[i] = trim(text[i]); // 自实现函数过滤
-                    if (!text[i].match(/^[ ]*$/)) // 为安全起见，判断非空格
-                    {
-                        //console.log("content ", i, ": -", text[i], "-");
-                        result.push(text[i]); // 另建数组保存
-                    }
-                }
-            }
-        })
-        
-        // 3.得到比较纯净的字符串，根据布局打印
-        for (var i = 0; i < result.length; i++)
-        {
-            var buffer = "";
-            //console.log("result ", i, ": +", result[i], "+");
-            if (result[i].includes("Latest Stable Kernel"))
-            {
-                result[i] = "最新稳定版"
-                console.log(`${result[i]} ${result[i+1]}`);
-                buffer += "    - name: " + result[i] + "\r\n";
-                buffer += "      version: " + result[i+1] + "\r\n";
-            }
-            else
-            {
-                if (result[i].includes("stable") ||
-                    result[i].includes("longterm") ||
-                    result[i].includes("linux-next"))
-                {
-                    if (result[i].includes("stable")) result[i] = "稳定版"
-                    if (result[i].includes("longterm")) result[i] = "长期支持版"
-                    if (result[i].includes("linux-next")) result[i] = "下一版"
-                    
-                    console.log(`${result[i]} ${result[i+1]} ${result[i+2]}`);
-                    // 注：name去掉最后一个字符冒号
-                    buffer += "    - name: " + result[i] + "\r\n";
-                    buffer += "      version: \"" + result[i+1] + "\"\r\n";
-                    buffer += "      time: \"" + result[i+2] + "\"\r\n";
-                    buffer += "      href: " + "todo" + "\r\n";
-                    buffer += "      download: " + "todo" + "\r\n";
-                }
-            }
-            // 追加方式
-            fs.writeFileSync(file, buffer, { 'flag': 'a' });
+function getbusybox() {
+  var target = 'https://busybox.net/downloads/';
+  superagent.get(target).end((error, response) => {
+    // 1.获取页面文档数据
+    var content = response.text;
+    var $ = cheerio.load(content);
+    var result = new Object();
+    // 2. 找到 pre 内容
+    // 3. pre只有一个元素，有换行，过滤，并逆转，找到tar.bz2那一行，即为最新版本
+    // busybox-1.31.1.tar.bz2  2019-10-25 08:42  2.3M
+    $('pre').each((index, item) => {
+      var text = $(item).text();
+      text = text.split('\n').reverse();
+      for (var i = 0; i < text.length; i++) {
+        if (text[i].includes('tar.bz2')) {
+          console.log('content ', text[i]);
+          text = text[i];
+          break;
         }
+      }
+      result = text.split(' ');
+      //console.log(result);
+      var buffer = '';
+      buffer += '    - name: ' + 'Busybox' + '\r\n';
+      buffer +=
+        '      version: "' +
+        result[1].substring(8, result[1].length - 8) +
+        '"\r\n';
+      buffer += '      time: "' + result[3] + '"\r\n';
+      buffer += '      href: ' + 'todo' + '\r\n';
+      buffer += '      download: ' + 'todo' + '\r\n';
+      fs.writeFileSync(file, buffer, { flag: 'a' });
     });
+  });
 }
 
-function github_release(name, respo)
-{
-var target = "https://api.github.com/repos/" + respo + "/releases/latest";
+function getkernel() {
+  var buffer = '';
+  buffer += '  - type: "Kernel"\r\n';
+  buffer += '    project:\r\n';
+  fs.writeFileSync(file, buffer, { flag: 'a' });
 
-let userAgent = userAgents[parseInt(Math.random() * userAgents.length)];
-superagent
+  var target = 'https://www.kernel.org/';
+  superagent.get(target).end((error, response) => {
+    // 1.获取页面文档数据
+    var content = response.text;
+    var $ = cheerio.load(content);
+    var result = new Array();
+    // 2. 找到table 第一组为协议，第二组为最新版本，第三组为发布版本列表
+    $('table').each((index, item) => {
+      if (index != 0) {
+        // 第一组table不需要
+        var text = $(item).text();
+        text = text.split('\n');
+        for (var i = 0; i < text.length; i++) {
+          //text[i] = text[i].trim(); // 过滤掉空格，但实际上还有
+          text[i] = trim(text[i]); // 自实现函数过滤
+          if (!text[i].match(/^[ ]*$/)) {
+            // 为安全起见，判断非空格
+            //console.log("content ", i, ": -", text[i], "-");
+            result.push(text[i]); // 另建数组保存
+          }
+        }
+      }
+    });
+
+    // 3.得到比较纯净的字符串，根据布局打印
+    for (var i = 0; i < result.length; i++) {
+      var buffer = '';
+      //console.log("result ", i, ": +", result[i], "+");
+      if (result[i].includes('Latest Stable Kernel')) {
+        result[i] = '最新稳定版';
+        console.log(`${result[i]} ${result[i + 1]}`);
+        buffer += '    - name: ' + result[i] + '\r\n';
+        buffer += '      version: ' + result[i + 1] + '\r\n';
+      } else {
+        if (
+          result[i].includes('stable') ||
+          result[i].includes('longterm') ||
+          result[i].includes('linux-next')
+        ) {
+          if (result[i].includes('stable')) result[i] = '稳定版';
+          if (result[i].includes('longterm')) result[i] = '长期支持版';
+          if (result[i].includes('linux-next')) result[i] = '下一版';
+
+          console.log(`${result[i]} ${result[i + 1]} ${result[i + 2]}`);
+          // 注：name去掉最后一个字符冒号
+          buffer += '    - name: ' + result[i] + '\r\n';
+          buffer += '      version: "' + result[i + 1] + '"\r\n';
+          buffer += '      time: "' + result[i + 2] + '"\r\n';
+          buffer += '      href: ' + 'todo' + '\r\n';
+          buffer += '      download: ' + 'todo' + '\r\n';
+        }
+      }
+      // 追加方式
+      fs.writeFileSync(file, buffer, { flag: 'a' });
+    }
+  });
+}
+
+function github_release(name, respo) {
+  var target = 'https://api.github.com/repos/' + respo + '/releases/latest';
+
+  let userAgent = userAgents[parseInt(Math.random() * userAgents.length)];
+  superagent
     .get(target)
-    .set({'User-Agent': userAgent})
-    .end((error,response)=>{
-        var content = response.text;
-        cxt = JSON.parse(content);
-        //console.log(json);
-        console.log(respo, "\r\n", cxt.tag_name, " ", cxt.html_url, " ", cxt.published_at);
-        var buffer = "";
-        buffer += "    - name: " + name + "\r\n";
-        buffer += "      version: " + cxt.tag_name + "\r\n";
-        buffer += "      time: \"" + cxt.published_at.substr(0, 10) + "\"\r\n";
-        buffer += "      href: " + "todo" + "\r\n";
-        buffer += "      download: " + cxt.html_url + "\r\n";
-        
-        // 追加方式
-        fs.writeFileSync(file, buffer, { 'flag': 'a' });
+    .set({ 'User-Agent': userAgent })
+    .end((error, response) => {
+      var content = response.text;
+      cxt = JSON.parse(content);
+      //console.log(json);
+      console.log(
+        respo,
+        '\r\n',
+        cxt.tag_name,
+        ' ',
+        cxt.html_url,
+        ' ',
+        cxt.published_at
+      );
+      var buffer = '';
+      buffer += '    - name: ' + name + '\r\n';
+      buffer += '      version: ' + cxt.tag_name + '\r\n';
+      buffer += '      time: "' + cxt.published_at.substr(0, 10) + '"\r\n';
+      buffer += '      href: ' + 'todo' + '\r\n';
+      buffer += '      download: ' + cxt.html_url + '\r\n';
+
+      // 追加方式
+      fs.writeFileSync(file, buffer, { flag: 'a' });
     });
 }
 
 Date.prototype.Format = function(fmt) {
-    var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "S": this.getMilliseconds() //毫秒 
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
+  var o = {
+    'M+': this.getMonth() + 1, //月份
+    'd+': this.getDate(), //日
+    'h+': this.getHours(), //小时
+    'm+': this.getMinutes(), //分
+    's+': this.getSeconds(), //秒
+    S: this.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(
+      RegExp.$1,
+      (this.getFullYear() + '').substr(4 - RegExp.$1.length)
+    );
+  for (var k in o)
+    if (new RegExp('(' + k + ')').test(fmt))
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
+      );
+  return fmt;
+};
+
+function make_devops() {
+  var buffer = '';
+  buffer += '  - type: Devops\r\n';
+  buffer += '    project:\r\n';
+
+  // 追加方式
+  fs.writeFileSync(file, buffer, { flag: 'a' });
+
+  github_release('Docker', 'docker/docker-ce');
+  github_release('Kubernetes', 'kubernetes/kubernetes');
+  github_release('k3s', 'rancher/k3s');
+  github_release('KubeEdge', 'kubeedge/kubeedge');
 }
 
-function make_devops()
-{
-    var buffer = "";
-    buffer += "  - type: Devops\r\n";
-    buffer += "    project:\r\n";
+function make_ai() {
+  var buffer = '';
+  buffer += '  - type: Deep Learning\r\n';
+  buffer += '    project:\r\n';
+  fs.writeFileSync(file, buffer, { flag: 'a' });
 
-    // 追加方式
-    fs.writeFileSync(file, buffer, { 'flag': 'a' });
-
-    github_release("Docker", "docker/docker-ce");
-    github_release("Kubernetes", "kubernetes/kubernetes");
-    github_release("k3s", "rancher/k3s");
-    github_release("KubeEdge", "kubeedge/kubeedge");
+  github_release('TensorFlow', 'tensorflow/tensorflow');
 }
 
-function make_ai()
-{
-    var buffer = "";
-    buffer += "  - type: Deep Learning\r\n";
-    buffer += "    project:\r\n";
-    fs.writeFileSync(file, buffer, { 'flag': 'a' });
+function make_misc() {
+  var buffer = '';
+  buffer += '  - type: Linux world\r\n';
+  buffer += '    project:\r\n';
+  fs.writeFileSync(file, buffer, { flag: 'a' });
 
-    github_release("TensorFlow", "tensorflow/tensorflow");
-}
-
-function make_misc()
-{
-    var buffer = "";
-    buffer += "  - type: Linux world\r\n";
-    buffer += "    project:\r\n";
-    fs.writeFileSync(file, buffer, { 'flag': 'a' });
-
-    getbusybox();
-
+  getbusybox();
 }
 // TODO 要延时一段时间后再执行另外的，或说要同步
 // 这是版本追踪的函数
-function main1()
-{
-    // 以写方式，相当于从头创建文件
-    fs.writeFileSync(file, "opentitle: 开源追踪\r\nopenlead: 跟上开源的步伐\r\n", { 'flag': 'w' });
-    var myDate = (new Date()).Format("yyyy-MM-dd hh:mm:ss");
-    datetime = "update: \"" + myDate + "\"\r\n";
-    fs.writeFileSync(file, datetime, { 'flag': 'a' });
-    
-    fs.writeFileSync(file, "openproject: \r\n", { 'flag': 'a' });
+function main1() {
+  // 以写方式，相当于从头创建文件
+  fs.writeFileSync(
+    file,
+    'opentitle: 开源追踪\r\nopenlead: 跟上开源的步伐\r\n',
+    { flag: 'w' }
+  );
+  var myDate = new Date().Format('yyyy-MM-dd hh:mm:ss');
+  datetime = 'update: "' + myDate + '"\r\n';
+  fs.writeFileSync(file, datetime, { flag: 'a' });
 
-    var time = 2;
-    // 使用定时超时方式控制前后顺序，否则yml文件会乱
-    setTimeout(getkernel, time*1000);
-    time += 20;
-    setTimeout(make_misc, time*1000);
-    time += 20;
-    setTimeout(make_devops, time*1000);
-    time += 20;
-    setTimeout(make_ai, time*1000);
+  fs.writeFileSync(file, 'openproject: \r\n', { flag: 'a' });
 
-    //make_devops();
-    //make_ai();
+  var time = 2;
+  // 使用定时超时方式控制前后顺序，否则yml文件会乱
+  setTimeout(getkernel, time * 1000);
+  time += 20;
+  setTimeout(make_misc, time * 1000);
+  time += 20;
+  setTimeout(make_devops, time * 1000);
+  time += 20;
+  setTimeout(make_ai, time * 1000);
 
-    //getbusybox();
-    //getkernel();
+  //make_devops();
+  //make_ai();
+
+  //getbusybox();
+  //getkernel();
 }
 
 // 获取版本发布日期的函数
-function main2()
-{
+function main2() {}
 
-}
-
-function main()
-{
-    main1();
-    //main2();
+function main() {
+  main1();
+  //main2();
 }
 
 main();

@@ -1,5 +1,5 @@
 - name: 李迟
-#  alias: 李迟
+  #  alias: 李迟
   title: 首席架构师
   city: 南宁
   department:
@@ -72,8 +72,6 @@
   city: 南宁
   department:
     - 运维组
-
-
 # - name: 小桂哥
 #   department:
 #     - 核心开发组

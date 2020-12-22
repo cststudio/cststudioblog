@@ -1,8 +1,9 @@
-
 ## 概述
-基于hexo的网站
+
+基于 hexo 的网站
 
 ## 本地测试
+
 ```
 npm install  &&  npm start
 ```
@@ -10,7 +11,7 @@ npm install  &&  npm start
 ## 参考
 
 - 开源社： https://kaiyuanshe.cn/
-- electron官网：https://electronjs.org/
+- electron 官网：https://electronjs.org/
 
 ## 鸣谢
 

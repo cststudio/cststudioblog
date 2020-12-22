@@ -5,7 +5,7 @@
 # Site
 title: CST研习舍
 
-language: 
+language:
   - zh-CN
   - en
 
@@ -22,7 +22,6 @@ root: /
 permalink: :category/:urlname/
 permalink_defaults:
   url: untitle
-
 
 # Directory
 source_dir: source

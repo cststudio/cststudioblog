@@ -1,6 +1,6 @@
 # 求索栏目的各子项目
 acttitle: 求索
-actlead: 
+actlead:
   - text: 路漫漫其修远兮，吾将上下而求索。
   #- text: 宠辱不惊，看庭前花开花落；去留无意，望天空云卷云舒。
 
@@ -29,7 +29,6 @@ actsub:
       - type: info
         href: /
         text: 即将来到
-
   # - title: H.264/H.265码流分析器
   #   dir: right
   #   alead:
