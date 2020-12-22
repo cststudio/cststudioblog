@@ -11,7 +11,6 @@ date: 2019-12-01 16:24:15
 <center><h1>ARM平台搭建docker环境实录</h1></center>
 <center>迟思堂工作室</center>
 
-
 ## 一、背景
 
 在主流发行版的 Linux 系统运行 Docker 是十分简单的事，只需一条命令即可。而 ARM 平台，如 TK1、树莓派等，使用 Debian 或 Ubuntu 或其衍生系统，亦是闲事。  

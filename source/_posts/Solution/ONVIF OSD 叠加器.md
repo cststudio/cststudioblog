@@ -1,9 +1,11 @@
 ---
+
 layout: solution
 title: ONVIF OSD 叠加器
 urlname: onvif-osd-tool
 categories:
-  - Solution
+
+- Solution
 
 description: 基于 MFC 的 OSD 叠加器
 

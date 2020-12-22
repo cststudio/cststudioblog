@@ -1,0 +1,14 @@
+language: node_js
+node_js: stable
+cache:
+  apt: true
+  directories:
+    - node_modules
+sudo: required
+git:
+  quiet: true
+
+script:
+  - echo "running script"
+  - chmod +x build_travis.sh
+  - ./build_travis.sh || exit 1

@@ -1,9 +1,11 @@
 ---
+
 layout: solution
 title: ONVIF 客户端工具
 urlname: onvif-client-tool
 categories:
-  - Solution
+
+- Solution
 
 description: 基于 MFC 的 ONVIF 客户端工具
 
