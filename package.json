@@ -6,17 +6,6 @@
   "directories": {
     "doc": "source/_post/"
   },
-  "scripts": {
-    "start": "hexo clean  &&  hexo server",
-    "deploy": "hexo clean  &&  hexo deploy",
-    "format": "prettier --write \"{,!(node_modules|.git|scaffolds|themes|public)/**/}*.{html,md,css,less,js,json,yml,yaml}\"",
-    "build": "npm run format  &&  hexo clean  &&  hexo generate"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run build  &&  git add ."
-    }
-  },
   "hexo": {
     "version": "3.9.0"
   },
@@ -38,12 +27,5 @@
     "hexo-server": "^0.3.3",
     "icalendar": "^0.7.1",
     "superagent": "^5.1.2"
-  },
-  "devDependencies": {
-    "husky": "^3.0.5",
-    "prettier": "^1.18.2"
-  },
-  "prettier": {
-    "singleQuote": true
   }
 }
